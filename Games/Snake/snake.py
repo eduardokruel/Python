@@ -18,7 +18,7 @@ else:
 # Play Surface
 playSurface = pygame.display.set_mode((720,460))
 pygame.display.set_caption('Snake Game by Eduardo Kruel')
-time.sleep(5)
+
 
 # Colors
 red = pygame.Color(214,73,51) # Gameover
@@ -38,4 +38,17 @@ foodPos = [random.randrange(1,72)*10,random.randrange(1,46)*10]
 foodSpawn = True
 
 direction = "RIGHT"
-changeto = direction
+changeTo = direction
+
+
+# Game Over Function
+def gameOver():
+    myFont = pygame.font.SysFont("monaco", 100)
+    gameOverSurf = myFont.render("Game Over!", True, red)
+    gameOverRect = gameOverSurf.get_rect()
+    gameOverRect.midtop = (360,30)
+    playSurface.blit(gameOverSurf, gameOverRect)
+    pygame.display.update()
+
+gameOver()
+time.sleep(5)
