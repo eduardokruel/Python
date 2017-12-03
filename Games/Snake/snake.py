@@ -53,12 +53,14 @@ def gameOver():
     pygame.quit() # pygame exit
     sys.exit() # console exit
 
-
+ #Main Loop
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit() # pygame exit
             sys.exit() # console exit
+
+        #Key Detection
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT or event.key == ord("d"):
                 changeTo = "RIGHT"
@@ -71,7 +73,7 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 pygame.event.post(pygame.event.Event(QUIT))
 
-
+    # Validation of Direction
     if changeTo == "RIGHT" and not direction == "LEFT":
         direction = "RIGHT"
     if changeTo == "LEFT" and not direction == "RIGHT":
@@ -80,3 +82,25 @@ while True:
         direction = "UP"
     if changeTo == "DOWN" and not direction == "UP":
         direction = "DOWN"
+
+    #Snake Position Update
+    if direction == "RIGHT":
+        snakePos[0] += 10
+    if direction == "LEFT":
+        snakePos[0] -= 10
+    if direction == "UP":
+        snakePos[1] -= 10
+    if direction == "DOWN":
+        snakePos[1] += 10
+
+    #Snake Body Mechanism
+    snakeBody.insert(0, list(snakePos))
+    if snakePos[0] == foodPos[0] and snakePos[1] == foodPos[1]:
+        foodSpawn = False
+    else:
+        snakeBody.pop()
+
+    if foodSpawn == False:
+        foodPos = [random.randrange(1,72)*10,random.randrange(1,46)*10]
+        foodSpawn = True
+    
