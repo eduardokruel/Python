@@ -70,4 +70,13 @@ while True:
                 changeTo = "DOWN"
             if event.key == pygame.K_ESCAPE:
                 pygame.event.post(pygame.event.Event(QUIT))
-            
+
+
+    if changeTo == "RIGHT" and not direction == "LEFT":
+        direction = "RIGHT"
+    if changeTo == "LEFT" and not direction == "RIGHT":
+        direction = "LEFT"
+    if changeTo == "UP" and not direction == "DOWN":
+        direction = "UP"
+    if changeTo == "DOWN" and not direction == "UP":
+        direction = "DOWN"
