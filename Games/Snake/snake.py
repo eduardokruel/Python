@@ -26,3 +26,13 @@ lightGreen = pygame.Color(171,255,79) # Snake
 grey = pygame.Color(56,56,56) # Score
 green = pygame.Color(41,191,18) # Food
 lightBlue = pygame.Color(141,228,255) # Background
+
+# FPS controller
+fpsControler = pygame.time.Clock()
+
+# Important variables
+snakePos = [100,50]
+snakeBody = [[100,50],[90,50],[80,50]]
+
+foodPos = [random.randrange(1,72)*10,random.randrange(1,46)*10]
+foodSpawn = True
