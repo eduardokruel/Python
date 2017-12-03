@@ -49,6 +49,25 @@ def gameOver():
     gameOverRect.midtop = (360,30)
     playSurface.blit(gameOverSurf, gameOverRect)
     pygame.display.update()
+    time.sleep(5)
+    pygame.quit() # pygame exit
+    sys.exit() # console exit
 
-gameOver()
-time.sleep(5)
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit() # pygame exit
+            sys.exit() # console exit
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT or event.key == ord("d"):
+                changeTo = "RIGHT"
+            if event.key == pygame.K_LEFT or event.key == ord("a"):
+                changeTo = "LEFT"
+            if event.key == pygame.K_UP or event.key == ord("w"):
+                changeTo = "UP"
+            if event.key == pygame.K_DOWN or event.key == ord("s"):
+                changeTo = "DOWN"
+            if event.key == pygame.K_ESCAPE:
+                pygame.event.post(pygame.event.Event(QUIT))
+            
