@@ -28,7 +28,7 @@ green = pygame.Color(41,191,18) # Food
 lightBlue = pygame.Color(141,228,255) # Background
 
 # FPS controller
-fpsControler = pygame.time.Clock()
+fpsController = pygame.time.Clock()
 
 # Important variables
 snakePos = [100,50]
@@ -100,7 +100,29 @@ while True:
     else:
         snakeBody.pop()
 
+    #Food Spawn
     if foodSpawn == False:
         foodPos = [random.randrange(1,72)*10,random.randrange(1,46)*10]
         foodSpawn = True
-    
+
+    #Background
+    playSurface.fill(lightBlue)
+
+    #Draw Snake
+    for pos in snakeBody:
+        pygame.draw.rect(playSurface, green,
+        pygame.Rect(pos[0],pos[1],10,10))
+
+    #Draw Food
+    pygame.draw.rect(playSurface, lightGreen,
+    pygame.Rect(foodPos[0],foodPos[1],10,10))
+
+    #Game Over Condition
+    if snakePos[0] > 710 or snakePos[0] < 0:
+        gameOver()
+    if snakePos[1] > 450 or snakePos[0] < 1:
+        gameOver()
+
+    #Update and FPS
+    pygame.display.update()
+    fpsController.tick(30)
