@@ -1,2 +1,2 @@
 # Python
-Some Random Scripts ;D
+Random Python Projects and Code
